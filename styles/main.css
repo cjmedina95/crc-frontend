@@ -1,0 +1,19 @@
+body {
+	color: #ffffff;
+}
+
+.container {
+	max-width: 100%;
+}
+
+.row {
+	height: 100%;
+}
+
+#left-half {
+	background-color: #15171e;
+}
+
+#right-half {
+	background-color: #121212;
+}
