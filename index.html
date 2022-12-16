@@ -16,7 +16,7 @@
 			function callAPI() {	
 				var ajaxIncrement = $.ajax({
 						type: 'GET',
-						url: 'https://counterhttpfunc.azurewebsites.net/api/counter/increment',
+						url: 'https://crc-counterapp.azurewebsites.net/api/counter/increment?',
 						success: function(response) {
 							console.log("API increment success!");
 						}
@@ -29,7 +29,7 @@
 				ajaxIncrement.done(function(data) {
 					$.ajax({
 						type: 'GET',
-						url: 'https://counterhttpfunc.azurewebsites.net/api/counter/get',
+						url: 'https://crc-counterapp.azurewebsites.net/api/counter/get?',
 						success: function(response) {
 							console.log(response['count']);
 							$('#counter').text(response['count']);
