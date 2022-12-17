@@ -24,6 +24,7 @@
 				
 				ajaxIncrement.fail(function() {
 					console.log("API increment call failed!");
+					ajaxIncrement.abort()
 				});
 				
 				ajaxIncrement.done(function(data) {
@@ -37,6 +38,7 @@
 						}
 					}).fail(function() {
 						console.log("API get call failed!");
+						ajaxIncrement.abort()
 					});;
 				});
 			}
