@@ -22,8 +22,8 @@
 						}
 					});
 				
-				ajaxIncrement.fail(function() {
-					console.log("API increment call failed!");
+				ajaxIncrement.fail(function(req, err) {
+					console.log("API increment call failed! - " + err);
 					ajaxIncrement.abort()
 				});
 				
