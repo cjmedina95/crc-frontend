@@ -28,9 +28,9 @@
 				}
 
 				const incrementRequest = new Request("https://crc-counterapp.azurewebsites.net/api/counter/increment?", options);
-				const getCountRequest = new Request("https://crc-counterapp.azurewebsites.net/api/counter/increment?", options);
+				const getCountRequest = new Request("https://crc-counterapp.azurewebsites.net/api/counter/get?", options);
 
-				const increment = fetch(incrementRequest)
+				fetch(incrementRequest)
 					.then(handleErrors)
 					.then(data => {
 						return fetch(getCountRequest);
