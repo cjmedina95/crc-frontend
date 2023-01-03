@@ -27,13 +27,19 @@
 					mode: "cors"
 				}
 
-				const urlReq = new Request("https://crc-counterapp.azurewebsites.net/api/counter/increment?", options);
+				const incrementRequest = new Request("https://crc-counterapp.azurewebsites.net/api/counter/increment?", options);
+				const getCountRequest = new Request("https://crc-counterapp.azurewebsites.net/api/counter/increment?", options);
 
-				fetch(urlReq)
+				const increment = fetch(incrementRequest)
 					.then(handleErrors)
-					.then(function(response) {
-						console.log("Success!")
-					}).catch(function(error){
+					.then(function() {
+						return fetch(getCountRequest);
+					})
+					.then(response => response.json())
+					.then(function(data) {
+						console.log(data)
+					})
+					.catch(function(error){
 						console.log(error)
 					});
 				
