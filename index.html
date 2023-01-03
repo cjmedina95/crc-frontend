@@ -32,7 +32,7 @@
 
 				const increment = fetch(incrementRequest)
 					.then(handleErrors)
-					.then(function() {
+					.then(data => {
 						return fetch(getCountRequest);
 					})
 					.then(function(data) {
