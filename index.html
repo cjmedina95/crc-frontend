@@ -61,11 +61,11 @@
 				})
 				.then(response => response.json())
 				.then(function(data) {
-					console.log(data)
+					console.log(data);
 					$('#counter').text(data['count']);
 				})
 				.catch(function(error){
-					console.log(error)
+					console.log(error);
 				});
 			
 		}
