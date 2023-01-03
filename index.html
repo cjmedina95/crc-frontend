@@ -13,6 +13,20 @@
 		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 		
 		<script>
+			function fetchAPI() {
+
+				const options = {
+					method: "GET",
+					mode: "cors"
+				}
+
+				const urlReq = new Request("https://crc-counterapp.azurewebsites.net/api/counter/increment?", options);
+
+				fetch(urlReq).then((response) => {
+					console.log("Success!")
+				});
+			}
+
 			function callAPI() {	
 				var ajaxIncrement = $.ajax({
 						type: 'GET',
