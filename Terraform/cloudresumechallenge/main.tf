@@ -340,7 +340,7 @@ resource "azurerm_function_app" "crc_function_app" {
         ftps_state = "Disabled"
 		
 	    cors {
-		  allowed_origins = ["https://cjmedina.dev", "https://tf-crcresume-endpoint.azureedge.net/"]
+		  allowed_origins = ["https://cjmedina.dev", "https://tf-crcresume-endpoint.azureedge.net/", "https://functions.azure.com"]
 	    }
     }
 }
