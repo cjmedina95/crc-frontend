@@ -13,6 +13,14 @@
 		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 		
 		<script>
+			function handleErrors(response) {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				}
+
+				return response;
+			}
+			
 			function fetchAPI() {
 				const options = {
 					method: "GET",
@@ -21,15 +29,18 @@
 
 				const urlReq = new Request("https://crc-counterapp.azurewebsites.net/api/counter/increment?", options);
 
-				fetch(urlReq).then((response) => {
-					console.log("Success!")
-				}).fail(function(req, err) {
-					console.log("Failure! - " + req + " " + err)
-				});
+				fetch(urlReq)
+					.then(handleErrors)
+					.then(function(response) {
+						console.log("Success!")
+					}).catch(function(error){
+						console.log(error)
+					});
+				
 			}
 
 			function callAPI() {
-				
+
 				fetchAPI();
 
 				var ajaxIncrement = $.ajax({
