@@ -14,7 +14,6 @@
 		
 		<script>
 			function fetchAPI() {
-
 				const options = {
 					method: "GET",
 					mode: "cors"
@@ -24,10 +23,15 @@
 
 				fetch(urlReq).then((response) => {
 					console.log("Success!")
+				}).fail(function(req, err) {
+					console.log("Failure! - " + req + " " + err)
 				});
 			}
 
-			function callAPI() {	
+			function callAPI() {
+				
+				fetchAPI();
+
 				var ajaxIncrement = $.ajax({
 						type: 'GET',
 						url: 'https://crc-counterapp.azurewebsites.net/api/counter/increment?',
