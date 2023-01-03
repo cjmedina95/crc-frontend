@@ -42,44 +42,10 @@
 					.catch(function(error){
 						console.log(error)
 					});
-				
-			}
-
-			function callAPI() {
-
-				fetchAPI();
-
-				var ajaxIncrement = $.ajax({
-						type: 'GET',
-						url: 'https://crc-counterapp.azurewebsites.net/api/counter/increment?',
-						success: function(response) {
-							console.log("API increment success!");
-						}
-					});
-				
-				ajaxIncrement.fail(function(req, err) {
-					console.log("API increment call failed! - " + err);
-					ajaxIncrement.abort()
-				});
-				
-				ajaxIncrement.done(function(data) {
-					$.ajax({
-						type: 'GET',
-						url: 'https://crc-counterapp.azurewebsites.net/api/counter/get?',
-						success: function(response) {
-							console.log(response);
-							console.log(response['count']);
-							$('#counter').text(response['count']);
-						}
-					}).fail(function() {
-						console.log("API get call failed!");
-						ajaxIncrement.abort()
-					});;
-				});
 			}
 		</script>
 	</head>
-	<body onload="callAPI()">
+	<body onload="fetchAPI()">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6 col-xs-6" id="left-half">
