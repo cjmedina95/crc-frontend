@@ -46,6 +46,8 @@
 		}
 		
 		function fetchAPI() {
+			$('#counter').text("Loading...");
+
 			const options = {
 				method: "GET",
 				mode: "cors"
