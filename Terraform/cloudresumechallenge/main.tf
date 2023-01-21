@@ -232,6 +232,10 @@ resource "azurerm_cosmosdb_account" "crc_cosmos" {
 	name = "EnableServerless"
   }
   
+  capabilities {
+	name = "EnableTable"
+  }
+  
   geo_location {
     location          = "westus"
     failover_priority = 0
@@ -252,7 +256,7 @@ resource "azurerm_cosmosdb_account" "crc_cosmos" {
   }
 }
 
-resource "azurerm_cosmosdb_sql_database" "crc_db" {
+resource "azurerm_cosmosdb_table" "crc_db" {
   name                = "crc-db"
   resource_group_name = azurerm_resource_group.crc_rg.name
   account_name        = azurerm_cosmosdb_account.crc_cosmos.name
@@ -269,35 +273,6 @@ resource "azurerm_app_service_plan" "crc_service_plan" {
   sku {
     tier = "Dynamic"
     size = "Y1"
-  }
-}
-
-resource "azurerm_cosmosdb_sql_container" "example" {
-  name                  = "crc-visitorcount"
-  resource_group_name   = azurerm_resource_group.crc_rg.name
-  account_name          = azurerm_cosmosdb_account.crc_cosmos.name
-  database_name         = azurerm_cosmosdb_sql_database.crc_db.name
-  partition_key_path    = "/id"
-  partition_key_version = 1
-
-  indexing_policy {
-    indexing_mode = "consistent"
-
-    included_path {
-      path = "/*"
-    }
-
-    included_path {
-      path = "/included/?"
-    }
-
-    excluded_path {
-      path = "/excluded/?"
-    }
-  }
-
-  unique_key {
-    paths = ["/definition/idlong", "/definition/idshort"]
   }
 }
 
