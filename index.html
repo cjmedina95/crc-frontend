@@ -58,6 +58,9 @@
 			fetch(getCountRequest)
 				.then(handleErrors)
 				.then(function(data) {
+					return data.json()
+				})
+				.then(function(data) {
 					console.log(data);
 					$('#counter').text(data['count']);
 				})
